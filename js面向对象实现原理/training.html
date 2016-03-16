@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+
+//创建对象方式
+
+//工厂模式
+
+// function createPerson(name, age) {
+//   var o = new Object();
+//   o.name = name;
+//   o.age = age;
+//   o.hello = function() {
+//     console.log('hello ' + this.name);
+//   };
+//   return o;
+// }
+
+// var p1 = createPerson('a', 11);
+// var p2 = createPerson('b', 12);
+// p1.hello();
+// p2.hello();
+
+
+//构造函数模式
+
+// function Person(name, age) {
+//   this.name = name
+//   this.age = age;
+//   this.hello = function() {
+//     console.log('hello ' + this.name);
+//   }
+// }
+
+// var p1 = new Person('a', 11);
+// var p2 = new Person('b', 12);
+// p1.hello();
+// p2.hello();
+
+//原型模式
+
+// function Person() {};
+// Person.prototype.name = 'nate';
+// Person.prototype.age = 22;
+// Person.prototype.colors = ['red','green'];
+// Person.prototype.hello = function() {
+//   console.log('hello ', + this.name);
+// }
+
+// var p1 = new Person();
+// var p2 = new Person();
+// p1.colors.push('pink');
+// console.log(p1.colors);
+// console.log(p2.colors);
+
+
+//组合使用构造函数和原型模式
+
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+//   this.friends = ['john','tom'];
+// }
+
+// Person.prototype = {
+//   constructor: Person,
+//   hello: function() {
+//     console.log('hello,' + this.name);
+//   }
+// }
+
+//动态原型模式
+
+// function Person(name, age) {
+//   this.name = name;
+//   this.age = age;
+//   if(typeof this.hello != 'function') {
+//     Person.prototype.hello = function() {
+//       console.log('hello,' + this.name);
+//     }
+//   }
+// }
+
+
+
+//继承方式
+
+//原型链继承
+
+// function SuperType() {
+//   this.property = true;
+//   this.colors = ['red','green'];
+// }
+// SuperType.prototype.getSuperValue = function() {
+//   return this.property;
+// }
+
+// function SubType() {
+//   this.subproperty = false;
+// }
+// SubType.prototype = new SuperType();
+// SubType.prototype.getSubValue = function() {
+//   return this.subproperty;
+// }
+// SubType.prototype.constructor = SubType;
+
+// var supertype = new SuperType();
+// var subtype = new SubType();
+
+// console.log(supertype.constructor);
+// console.log(subtype.constructor);
+
+
+
+// //借用构造函数
+// function SuperType() {
+//   this.colors = ['red','green'];
+// }
+
+// function SubType() {
+//   SuperType.call(this);
+// }
+
+
+// //组合继承
+
+// function SuperType(name) {
+//   this.name = name;
+//   this.colors = ['red','green'];
+// }
+// SuperType.prototype.hello = function() {
+//   console.log(this.name);
+// }
+
+// function SubType(name, age) {
+//   SuperType.call(this, name);
+//   this.age = age;
+// }
+// SubType.prototype = new SuperType();
+// SubType.prototype.sayAge = function() {
+//   console.log(this.age);
+// };
+
+
+// 原型式继承
+// function object(o) {
+//   function F() {}
+//   F.prototype = o;
+//   return new F();
+// }
+
+
+// //寄生式继承
+// function createAnother(original) {
+//   var clone = object(original);
+//   clone.hello = function() {
+//     console.log('hello');
+//   };
+//   return clone;
+// }
+
+//寄生组合继承
+
+// function inheritPrototype(subtype, supertype) {
+//   var prototype = object(supertype.prototype);
+//   prototype.constructor = subtype;
+//   subtype.prototype = prototype;
+// }
+
+// function SuperType(name) {
+//   this.name = name;
+//   this.colors = ['red','green'];
+// }
+// SuperType.prototype.hello = function() {
+//   console.log('hello,' + this.name);
+// };
+
+// function SubType(name, age) {
+//   SuperType.call(this, name);
+//   this.age = age;
+// }
+
+// inheritPrototype(SubType, SuperType);
+
+// SubType.prototype.sayAge = function() {
+//   console.log(this.age);
+// };
+
+// var subtype = new SubType('nate', 22);
+// var supertype = new SuperType('xxx');
+
+// subtype.hello();
+// supertype.hello();
+
+</script>
